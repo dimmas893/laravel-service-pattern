@@ -37,13 +37,11 @@ public function all($perPage = null, $filter = null, $page = null)
             $query->where('name', 'like', '%' . $filter . '%')
                   ->orWhere('email', 'like', '%' . $filter . '%');
         }
-
         // Lakukan pagination
         $data = $query->paginate($perPage);
 
         // Menyimpan data ke dalam cache dengan waktu kadaluarsa 60 menit (opsional)
         Cache::put($cacheKey, $data, now()->addMinutes(60));
-
         return $data;
     } catch (\Exception $exception) {
         // Tangani error
