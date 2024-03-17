@@ -27,8 +27,9 @@ class UserServiceImplement extends ServiceApi implements UserService
     {
         $perPage = $request->input('perPage');
         $filter = $request->input('filter');
+        $page = $request->input('page');
 
-        return $this->mainRepository->all($perPage, $filter);
+        return $this->mainRepository->all($perPage, $filter, $page);
     }
     // Define your custom methods :)
 }

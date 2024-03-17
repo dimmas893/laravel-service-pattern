@@ -6,15 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\UserRequest;
 use App\Http\Requests\Api\UserSearchRequest;
 use App\Services\Api\User\UserService;
+use App\Services\Testing\TestingService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     private $userService;
+    private $testingService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, TestingService $testingService)
     {
         $this->userService = $userService;
+        $this->testingService = $testingService;
     }
     // public function findByEmail($email) // Tambahkan parameter $email di sini
     // {
@@ -26,6 +29,12 @@ class UserController extends Controller
         // return 'dsd'; // Hapus atau komentari baris ini
         // $request = $userSearchRequest->validated();
         return $this->userService->all($userSearchRequest);
+    }
+    public function tes()
+    {
+        // return 'dsd'; // Hapus atau komentari baris ini
+        // $request = $userSearchRequest->validated();
+        return $this->testingService->tes();
     }
 
 

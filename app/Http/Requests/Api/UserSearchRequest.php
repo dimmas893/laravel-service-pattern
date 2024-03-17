@@ -11,7 +11,8 @@ class UserSearchRequest extends FormRequest
     {
         return [
             'perPage' => 'nullable|integer',
-            'filter' => 'nullable'
+            'filter' => 'nullable',
+            'page'=>  'nullable|integer'
         ];
     }
 
